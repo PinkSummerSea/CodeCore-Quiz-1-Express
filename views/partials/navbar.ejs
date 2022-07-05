@@ -1,0 +1,11 @@
+<% if (!username) { %>
+        <button onclick="alert('You need to be signed in before you can Cluck.')">Cluck!</button>
+        <button><a href="/sign_in">Sign In</a></button> 
+        <!-- need verify if the action works for sign in button -->
+<% } else { %>
+        <button>Cluck!</button>
+        <span><%- username %></span>
+        <form action="/sign_out" method="post">
+        <button>Sign Out</button>
+        </form>
+<% } %> 
