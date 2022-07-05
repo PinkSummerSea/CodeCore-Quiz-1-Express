@@ -1,5 +1,8 @@
 <%- include('../partials/header') %> 
     <% for( let cluck of clucks ) { %>
+        <% const currentTime = new Date(); %> 
+        <% const relativeTime = timeDifference(currentTime, cluck.created_at) %> 
+        
         <div class="card mb-3" style="width: 80%;">
             <div class="card-body">
               
@@ -7,8 +10,8 @@
              <img src="/images/chicken6.jpeg" alt="avatar image" class="thumbnail_img">
              </div>
               
-              <span class="card-title"><%- cluck.username %></span>
-              <span class="card-title"><%- cluck.created_at %></span>
+              <span class="card-title"><%- cluck.username %> • </span>
+              <span class="card-title"><%- relativeTime %></span>
               <p class="card-text"><%- cluck.content %></p>
               
               <% if (cluck.image_url) { %>
