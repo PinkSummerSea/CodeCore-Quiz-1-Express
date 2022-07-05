@@ -3,6 +3,7 @@ const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const path = require('path');
+const clucksRouter = require('./routes/clucks/clucksRouter');
 
 const app = express();
 
@@ -43,6 +44,8 @@ app.post('/sign_out', (req, res) => {
     res.clearCookie('username');
     res.redirect('/')
 })
+
+app.use('/clucks', clucksRouter);
 
 app.listen(3000, () => {
     console.log('Sever is listening on port 3000')
