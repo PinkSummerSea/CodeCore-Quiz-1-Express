@@ -1,9 +1,12 @@
+<div>
+    <a href="/clucks" class="thumbnail"><img src="/images/chicken2.jpeg" alt="logo image" class="thumbnail_img"></a>
+</div>
 <% if (!username) { %>
         <button onclick="alert('You need to be signed in before you can Cluck.')">Cluck!</button>
         <button><a href="/sign_in">Sign In</a></button> 
         <!-- need verify if the action works for sign in button -->
 <% } else { %>
-        <button>Cluck!</button>
+        <button><a href="/clucks/new">Cluck!</a></button>
         <span><%- username %></span>
         <form action="/sign_out" method="post">
         <button>Sign Out</button>
