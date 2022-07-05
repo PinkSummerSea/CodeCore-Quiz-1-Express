@@ -7,7 +7,11 @@ router.get('/new', (req, res) => {
 })
 
 router.get('/', (req, res) => {
-    res.send('index page')
+    knex('clucks')
+    .orderBy('created_at', 'desc')
+    .then(clucks => {
+        res.render('clucks/index', { clucks })
+    })
 })
 
 router.post('/', (req, res) => {
