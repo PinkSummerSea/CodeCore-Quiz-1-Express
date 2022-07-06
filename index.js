@@ -61,11 +61,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+    const hashtags =
+    await knex('hashtags')
+    .orderBy('count', 'desc')
+    .returning('*');
+
     knex('clucks')
     .orderBy('created_at', 'desc')
     .then(clucks => {
-        res.render('clucks/index', { clucks, timeDifference })
+        res.render('clucks/index', { clucks, timeDifference, hashtags })
     })
 })
 
