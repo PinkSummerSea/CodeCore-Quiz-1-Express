@@ -1,13 +1,15 @@
 <%- include('../partials/header') %> 
     <div class="index-page-container">
-    <div class="trending-column">
-        <h5>Trending Clucks</h5>
-        <ul class="list-group">
-        <% for( let hashtag of hashtags ) { %>
-                <li class="list-group-item"><%- hashtag.name %> • <%- hashtag.count %></li>
-        <% } %>
-        </ul>
-    </div>
+    <% if (hashtags.length > 0) { %>
+        <div class="trending-column">
+            <h5>Trending Clucks</h5>
+            <ul class="list-group">
+            <% for( let hashtag of hashtags ) { %>
+                    <li class="list-group-item"><%- hashtag.name %> • <%- hashtag.count %></li>
+            <% } %>
+            </ul>
+        </div>
+    <% } %>
     <div class="posts-column">
         <% for( let cluck of clucks ) { %>
             <% const currentTime = new Date(); %> 

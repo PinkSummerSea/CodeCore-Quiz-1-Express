@@ -15,8 +15,7 @@ exports.seed = function(knex) {
         {
           username: 'Julie',
           content: 'Nobody is having chicken for dinner! This is a chicken app! \r\n' +
-            'Remember? @Summer 🥺\r\n' +
-            '#chickeniscute',
+            'Remember? @Summer 🥺\r\n',
           image_url: 'https://i.gifer.com/E1tD.gif',
         },
         {
@@ -26,17 +25,17 @@ exports.seed = function(knex) {
         },
         {
           username: 'Ivan',
-          content: 'I love this LV bag!! #louisvuitton #fashion #luxury #2022summer',
+          content: 'I love this LV bag!!',
           image_url: 'https://www.designscene.net/wp-content/uploads/2022/04/Miranda-Kerr-LOUIS-VUITTON-Capucines-Bag-00.jpg',
         },
         {
           username: 'Germanshepherd_heaven1',
-          content: 'Such Adorable puppy\r\nRate this cuteness out of 10😍😘\r\n#puppy #dog',
+          content: 'Such Adorable puppy\r\nRate this cuteness out of 10😍😘',
           image_url: 'https://pbs.twimg.com/media/FW6BiaoaQAAdgm-?format=png&name=small',
         },
         {
           username: 'Pug Lover',
-          content: 'Such cute eyes😍\r\nWho love this cutie\r\n#dog #puppy ',
+          content: 'Such cute eyes😍\r\nWho love this cutie',
           image_url: 'https://pbs.twimg.com/media/FW5o9M_acAEc6Us?format=jpg&name=small',
         },
         {
