@@ -4,8 +4,44 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const path = require('path');
 const clucksRouter = require('./routes/clucks/clucksRouter');
+const knex = require('./db/client')
 
 const app = express();
+
+function timeDifference(current, previous) {
+
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+
+    var elapsed = current - previous;
+
+    if (elapsed < msPerMinute) {
+         return 'Just Now';   
+    }
+
+    else if (elapsed < msPerHour) {
+         return Math.round(elapsed/msPerMinute) + ' minutes ago';   
+    }
+
+    else if (elapsed < msPerDay ) {
+         return Math.round(elapsed/msPerHour ) + ' hours ago';   
+    }
+
+    else if (elapsed < msPerMonth) {
+        return Math.round(elapsed/msPerDay) + ' days ago';   
+    }
+
+    else if (elapsed < msPerYear) {
+        return Math.round(elapsed/msPerMonth) + ' months ago';   
+    }
+
+    else {
+        return Math.round(elapsed/msPerYear ) + ' years ago';   
+    }
+}
 
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
@@ -26,7 +62,11 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.get('/', (req, res) => {
-    res.render('home')
+    knex('clucks')
+    .orderBy('created_at', 'desc')
+    .then(clucks => {
+        res.render('clucks/index', { clucks, timeDifference })
+    })
 })
 
 app.get('/sign_in', (req, res) => {
@@ -48,6 +88,6 @@ app.post('/sign_out', (req, res) => {
 app.use('/clucks', clucksRouter);
 
 app.listen(3000, () => {
-    console.log('Sever is listening on port 3000')
+    console.log('Server is listening on port 3000')
 })
 

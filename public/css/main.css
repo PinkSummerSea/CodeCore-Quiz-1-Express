@@ -1,3 +1,5 @@
+
+
 .thumbnail {
     border-radius: 10%;
     overflow: hidden;
@@ -8,16 +10,106 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 1em;
+    margin-top: 0.3em;
+    min-width: 2em;
 }
 
 .thumbnail_img {
-    flex-shrink: 0;
-    max-height: 120%
+    max-height: 180%;
 }
 
-
-
 .card {
-    margin: 2em;
     overflow: hidden;
+}
+
+.cluck_image {
+    max-width: 95%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    color: white;
+}
+
+.btn-link {
+    text-decoration: none;
+    color: gray;
+}
+
+.btn-link:hover{
+    color:gray;
+}
+
+.btn-link{
+    color:gray !important;
+}
+
+.btn-success {
+    background-color: rgb(229, 146, 193);
+    border-color: rgb(229, 146, 193);
+}
+
+.btn-success:hover {
+    background-color: rgb(225, 88, 165);
+    border-color: rgb(225, 88, 165);
+}
+
+.btn-primary {
+    background-color: rgb(195, 178, 241);
+    border-color: rgb(195, 178, 241);
+}
+
+.btn-primary:hover {
+    background-color: rgb(163, 136, 238);
+    border-color: rgb(163, 136, 238);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    color: gray;
+}
+
+::placeholder {
+    color: rgb(182, 182, 182) !important;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.page-container {
+    margin: 1em 2em;
+}
+
+.margin-needed {
+    margin-right: 1em;
+}
+
+.post-container {
+    display: flex;
+    color: gray;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.index-page-container {
+    margin: 1em 2em;
+    display: flex;
+}
+
+.trending-column {
+    margin-right: 2em;
 }

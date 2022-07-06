@@ -41,18 +41,43 @@ router.get('/new', (req, res) => {
     res.render('clucks/new')
 })
 
-router.get('/', (req, res) => {
-    
+router.get('/', async (req, res) => {
+    const hashtags =
+    await knex('hashtags')
+    .orderBy('count', 'desc')
+    .returning('*');
+    //console.log(hashtags);
     knex('clucks')
     .orderBy('created_at', 'desc')
     .then(clucks => {
-        res.render('clucks/index', { clucks, timeDifference })
+        res.render('clucks/index', { clucks, timeDifference, hashtags })
     })
 })
 
 router.post('/', (req, res) => {
     const { content, image_url } = req.body;
     const username = req.cookies.username;
+    const hashtagRegex = /\B(\#[a-zA-Z0-9]+\b)/gm;
+    const hashtagArr = content.match(hashtagRegex);
+    //console.log(hashtagArr);
+    hashtagArr.forEach(async (hashtag) => {
+        const data = await knex('hashtags').where('name', hashtag).first().returning('*');
+        //console.log(data);
+        if (data) {
+            await knex('hashtags')
+            .where('name', hashtag)
+            .increment({
+                count: 1
+            })
+        } else {
+            await knex('hashtags')
+            .insert({
+                name: hashtag,
+                count: 1
+            })
+        }
+    }) 
+   
     knex('clucks')
     .insert({username, content, image_url})
     .returning('*')
